@@ -6,4 +6,6 @@ def vowel_check(string):
             x += 1
 
     return x
-print(vowel_check('hello world'))
+
+if __name__ == '__main__':
+    text = input('Enter your sentence\n')
