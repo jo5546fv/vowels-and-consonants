@@ -4,20 +4,18 @@ def vowel_check(string):
     for i in string:
         if i in vowels:
             x += 1
-
     return x
 
-def constent(string):
-    contents = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','u','v','w','x','y','z']
+def consonant(string):
+    consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','u','v','w','x','y','z']
     x = 0
     for i in string:
-        if i in contents:
+        if i in consonants:
             x += 1    
-    print('Here are the constinets %d' % x)
-string = input('Type a string in:\n')
-constent(string)
-vowel_check(string)
+    print('Here are the consonants %d' % x)
 
 
 if __name__ == '__main__':
-    text = input('Enter your sentence\n')
+    text = input('Type a string in:\n')
+    consonant(text)
+    vowel_check(text)
