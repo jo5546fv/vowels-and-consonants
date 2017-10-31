@@ -26,7 +26,7 @@ phone_letter = {
     'Y':'9',
     'Z':'9'
 }
-
+#this will do the work
 phone_number = input('enter a 10 digit phone number(XXX-XXX-XXXX)\n')
 new_number = ''
 for i in range(len(phone_number)):
