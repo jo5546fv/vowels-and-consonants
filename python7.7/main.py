@@ -23,6 +23,7 @@ def table(title,column1,column2):
             dataint.append(int(datalist[1]))
 
     #print the formated table, and histogram
+    #python is fun
     print('%33s' % title)
     print('%-20s|%23s' % (column1, column2))
     for i in range(44):
