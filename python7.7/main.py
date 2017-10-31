@@ -1,43 +1,52 @@
-#variables and list
-datastring = []
-dataint = []
-#I made the loop variable 
-test = 1
-#went pretty simple for the first part just straight input into variable
-title = input('Enter a title for the data:\n')
-print('You entered: %s\n' % title)
+def table(title,column1,column2):
+    #made a couple empty lists
+    datastring = []
+    dataint = []
+    
+    while True:
+        data = input('Enter a data point (-1 to stop input):\n')
+        datalist = data.split(',')
+        #checking for errors and -1
+        if data == '-1':
+            print()
+            break
+        elif ',' not in data:
+            print('Error: No comma in string.\n')
+        elif data.count(',') >= 2:
+            print('Error: Too many commas in input.\n')
+        elif datalist[1].replace(' ','').isdigit() == False:
+            print('Error: Comma not followed by an integer.\n')
+        else:
+            print('Data string: %s' % datalist[0])
+            print('Data integer: %s\n' % datalist[1].replace(' ',''))
+            datastring.append(datalist[0])
+            dataint.append(int(datalist[1]))
 
-column1 = input('Enter the column 1 header:\n')
-print('You entered: %s\n' % column1)
-
-column2 = input('Enter the column 2 header:\n')
-print('You entered: %s\n' % column2)
-def data (name,point):
-        print(name,point)
-        print('Data string: %s' % name)
-        print('Data integer: %s' % point)
-        datastring.append(name)
-        dataint.append(point)         
-#this section needs to be done multiple times so while loop
-while True:
-    data1 = str(input('Enter a data point (-1 to stop input):\n'))
-    real_data = data1.split(',')
-    if data1 == '-1':
-        break
-    elif data1.count(',') >= 2:
-        print('Error: Too many commas in input.\n')
-    elif ',' not in data1:
-        print('Error: No comma in string.\n')
-    elif datalist[1].replace(' ','').isdigit() == False:
-        print('Error: Comma not followed by an integer.\n')
+    #print the formated table, and histogram
+    print('%33s' % title)
+    print('%-20s|%23s' % (column1, column2))
+    for i in range(44):
+        print('-',end='')
+    print()
+    for i in range(len(datastring)):
+        print('%-20s|%23d' % (datastring[i], dataint[i]))
     else:
-         name = real_data[0]
-         point = real_data[1]
-         data(name,point) 
-print(datastring)
-print('%33s' % title)
-print('%-20s|%23s' % (column1, column2))
-for i in range(44):
-    print('-',end='')
-for i in range(len(datastring)):
-    print('%-20s|%23d' % (datastring[i], dataint[i]))
+        print()
+    for i in range(len(datastring)):
+        print('%20s' % datastring[i],end=' ')
+        for x in range(dataint[i]):
+            print('*', end='')
+        else:
+            print()
+
+if __name__ == '__main__':
+    header = input('Enter a title for the data:\n')
+    print('You entered: %s\n' % header)
+
+    column1 = input('Enter the column 1 header:\n')
+    print('You entered: %s\n' % column1)
+
+    column2 = input('Enter the column 2 header:\n')
+    print('You entered: %s\n' % column2)
+
+    table(header, column1, column2)
