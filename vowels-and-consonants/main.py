@@ -6,7 +6,7 @@ def vowel_check(string):
         if i in vowels:
             x += 1
     return x
-    
+##comsonat part    
 def consonant(string):
     '''check for consonants'''
     consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','u','v','w','x','y','z']
