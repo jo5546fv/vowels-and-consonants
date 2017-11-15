@@ -10,10 +10,10 @@ def print_menu():
 
 class ItemToPurchase:
     
-    def __init__(self):
-        self.item_name = input('Enter the item name:\n')
-        self.item_price = float(input('Enter the item price:\n'))
-        self.item_quantity = int(input('Enter the item quantity:\n'))
+    def __init__(self, item_name, item_price, item_quanity):
+        self.item_name = item_name
+        self.item_price = item_price
+        self.item_quantity = item_quanity
         
     def print_item_cost(self):
         print('%s %d @ $%d = $%d' % (self.item_name, self.item_quantity,
@@ -24,16 +24,27 @@ class ItemToPurchase:
 
 if __name__ == "__main__":
     print('Item 1')
-    item1 = ItemToPurchase()
+    item1 = ItemToPurchase(input('Enter the item name:\n'),float(input('Enter the item price:\n')),int(input('Enter the item quantity:\n')))
     
     print('\nItem 2')
-    item2 = ItemToPurchase()
+    item2 = ItemToPurchase(input('Enter the item name:\n'),float(input('Enter the item price:\n')),int(input('Enter the item quantity:\n')))
     
     print('\nTOTAL COST')
     item1.print_item_cost()
     item2.print_item_cost()
     
     print('\nTotal: $%d' % ((item1.item_price * item1.item_quantity) + (item2.item_price * item2.item_quantity)))
+
+
+class ShoppingCart(object):
+   def __init__(self):
+       self.total = 0
+       self.items = {}
+
+   def add_item(self, item_name, quantity, price):
+       self.total += price*quantity
+       self.items.update({item_name: quantity})
+
    
 #PRINTS MENU#
 while True:          
@@ -41,8 +52,8 @@ while True:
     choice = input("Choose an option: ")
      
     if choice=='a':
-        newitem = ShoppingCart()
-        add_item(newitem)
+        newitem.ShoppingCart()
+    
         print(cart_items)
         
     elif choice=='r':
