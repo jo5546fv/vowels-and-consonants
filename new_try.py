@@ -1,3 +1,4 @@
+
 cart_items = []
 def print_menu():       
     print  ("MENU")
@@ -23,6 +24,10 @@ class ItemToPurchase:
         print('%s: %s'% (self.item_name, self.item_description))
 
 if __name__ == "__main__":
+    
+    name = input('enter name:')
+    date = input('enter date:')
+    
     print('Item 1')
     item1 = ItemToPurchase(input('Enter the item name:\n'),float(input('Enter the item price:\n')),int(input('Enter the item quantity:\n')))
     
@@ -36,14 +41,16 @@ if __name__ == "__main__":
     print('\nTotal: $%d' % ((item1.item_price * item1.item_quantity) + (item2.item_price * item2.item_quantity)))
 
 
-class ShoppingCart(object):
-   def __init__(self):
+class ShoppingCart:
+   def __init__(self, date, name):
+       self.date = date
+       self.name = name
        self.total = 0
-       self.items = {}
+       self.items = []
 
    def add_item(self, item_name, quantity, price):
        self.total += price*quantity
-       self.items.update({item_name: quantity})
+       cart_items.append(self.total)
 
    
 #PRINTS MENU#
@@ -52,7 +59,8 @@ while True:
     choice = input("Choose an option: ")
      
     if choice=='a':
-        newitem.ShoppingCart()
+        newitem = ShoppingCart(date,name)
+        newitem.add_item(input('New item name:'),int(input('Quanity:')),int(input('Price')))
     
         print(cart_items)
         
@@ -67,8 +75,12 @@ while True:
        
     elif choice=='o':
         print("Output shopping cart")
+        ##For TESTING
+        print(cart_items)
         
     elif choice=='q':
         break
     else:
         input("Wrong option selection. Enter any key to try again..")
+
+
