@@ -1,11 +1,3 @@
-def print_menu():       
-    print  ("MENU")
-    print("a - Add item to cart")
-    print("r - Remove item from cart")
-    print("c - Change item quantity")
-    print("i - Output items' descriptions")
-    print("o - Output shopping cart")
-    print('q - Quit')
 class ItemToPurchase:
     
     def __init__(self):
@@ -22,9 +14,10 @@ class ItemToPurchase:
         print('%s:%s' % (self.item_name, self.item_description))
 
 class ShoppingCart:
+
     def __init__(self, name, date):
-        self.name = name
-        self.date = date
+        self.customer_name = 'none'
+        self.current_date = 'January 1, 2016'
         cart_items = []
 
     def add_item(self):
@@ -38,25 +31,52 @@ class ShoppingCart:
 
     def modify_item(self):
         if self.item_name in cart_items:
-            pass#TODO:
+            self.item_quantity = int(input('Enter the new quantity:'))
+        else:
+            print('Item not found in cart. Nothing removed.')
 
     def get_num_items_in_cart(self):
         return len(cart_items + 1)
 
     def get_cost_of_cart(self):
-       pass #TODO:
-
-    def print_total(self):
-        pass#TODO:
+        total = 0
+        for i in cart_items:
+            total += i.item_price
+        return total
+        
+    def print_total(self,total):
+        if len(cart_items) >= 0:
+            print("%s's Shopping Cart - %s" % (self.customer_name, self.current_date))
+            print("Number of Items: %d\n" % self.get_num_items_in_cart())
+            for i in cart_items:
+                print('%s %d @ $%d = $%d' % (i.item_name, i.item_quantity,
+                i.item_price, (i.item_quantity * i.item_price)))
+            else:
+                print('\nTotal: $%d' % self.get_cost_of_cart())
+        else:
+            print('SHOPPING CART IS EMPTY')
 
     def print_descriptions(self):
-        pass#TODO:
-    
+        print('OUTPUT ITEMS\' DESCRIPTIONS')
+        print("%s's Shopping Cart - %s\n" % (self.customer_name, self.current_date))
+        print('Item Descriptions')
+        for i in cart_items:
+            print('%s: %s' % (self.item_name, self.item_description))
+
+def print_menu:
+    while True:
+        print("MENU")
+        print("a - Add item to cart")
+        print("r - Remove item from cart")
+        print("c - Change item quantity")
+        print("i - Output items' descriptions")
+        print("o - Output shopping cart")
+        print('q - Quit\n')
+        option = input('Choose an option:\n')
+        #this is where i am fuck this code jesus christ
+
 
 if __name__ == "__main__":
-    name = input("Enter customer's name:\n")
-    date = input("Enter today's date:\n")
-
     print('Item 1')
     item1 = ItemToPurchase()
     item1.item_name = input('Enter the item name:\n')
@@ -75,33 +95,3 @@ if __name__ == "__main__":
     item2.print_item_cost()
     
     print('\nTotal: $%d' % ((item1.item_price * item1.item_quantity) + (item2.item_price * item2.item_quantity)))
-
-    ShoppingCart(name, date)
-   
-#PRINTS MENU#
-while True:          
-    print_menu()    
-    choice = input("Choose an option: ")
-     
-    if choice=='a':     
-        print("a - Add item to cart")
-        
-    elif choice=='r':
-        print("r - Remove item from cart")
-        
-    elif choice=='c':
-        print("c - Change item quantity")
-       
-    elif choice=='i':
-        print("Output items' descriptions")
-       
-    elif choice=='o':
-        print("Output shopping cart")
-        
-    elif choice=='q':
-        break
-    else:
-        
-        input("Wrong option selection. Enter any key to try again..")
-
-  
