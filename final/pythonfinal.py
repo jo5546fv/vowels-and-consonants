@@ -52,7 +52,7 @@ root.mainloop()
 
 
 
-
+#add teams gui
 class makin_teams:
     def __init__(self, master):
         self.teams = {}
@@ -71,6 +71,8 @@ class makin_teams:
             master, text='ENTER', command=lambda :self.add_team())
         self.button_2 = Button(master, text='DONE', command=self.master.destroy)
 
+        self.entry_2.bind('<Return>', self.add_team)
+
         self.label_1.grid(row=0, sticky=E)
         self.label_2.grid(row=1, sticky=E)
 
@@ -80,10 +82,11 @@ class makin_teams:
         self.entry_1.grid(row=0, column=1)
         self.entry_2.grid(row=1, column=1)
 
-    def add_team(self):
+    def add_team(self, thing=0):
         try:
             self.person[self.name_name.get()] = []
             self.entry_1.delete(0, END)
+            self.entry_2.delete(0, END)
         except:
             pass
         return self.person
@@ -95,6 +98,7 @@ root = Tk()
 teamers = makin_teams(root)
 root.mainloop()
 teams = teamers.add_team()
+#TODO: can remove print, teams is person need to delete emptry dict
 print('finally',teams)
 
 #basics start here
