@@ -57,7 +57,6 @@ class makin_teams:
     def __init__(self, master):
         self.teams = {}
         self.person = {}
-        
         self.master = master
         self.label_1 = Label(master, text='Name')
         self.label_2 = Label(master, text='Team')
@@ -69,7 +68,7 @@ class makin_teams:
         self.entry_2 = Entry(master, textvariable=self.team_name)
 
         self.button_1 = Button(
-            master, text='ENTER', command=lambda :self.add_team(self.team_name.get(), self.name_name.get()))
+            master, text='ENTER', command=lambda :self.add_team())
         self.button_2 = Button(master, text='DONE', command=self.master.destroy)
 
         self.label_1.grid(row=0, sticky=E)
@@ -81,17 +80,22 @@ class makin_teams:
         self.entry_1.grid(row=0, column=1)
         self.entry_2.grid(row=1, column=1)
 
-    def add_team(self, team, name):
-        self.person[name] = self.teams[team]
-        print(self.person)
+    def add_team(self):
+        try:
+            self.person[self.name_name.get()] = []
+            self.entry_1.delete(0, END)
+        except:
+            pass
+        return self.person
 
+    def done(self):
+        self.master.destroy
 
 root = Tk()
-b = makin_teams(root)
+teamers = makin_teams(root)
 root.mainloop()
-
-
-
+teams = teamers.add_team()
+print('finally',teams)
 
 #basics start here
 while True:
