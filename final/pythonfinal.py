@@ -108,10 +108,10 @@ class the_draft:  # this is where all the drafting of players happens
         self.player_label_var = StringVar()
         self.player_label_var.set(self.drafted())
         self.player_label = Label(master, textvariable=self.player_label_var)
-        self.player_label.grid(row=4)
+        self.player_label.grid(row=3, column=5, sticky=W)
 
         self.label = Label(master, text='2017 Fantasy Draft')
-        self.label.grid(row=0, column=5, sticky=N)
+        self.label.grid(row=0, column=3, sticky=N)
 
         self.choose_player_label = Label(master, text='Choose your player')
         self.choose_player_label.grid(row=1, sticky=W)
